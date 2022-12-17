@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Product {
 
     private int id;
@@ -40,6 +42,40 @@ public class Product {
     public static Product createProductWithLongTermSaving(String productName,
                                                           long upc, String manufacturer, double price, int count) {
         return new Product(productName, upc, manufacturer, price, count);
+    }
+
+    public static void printProductByName(ArrayList<Product> products, String name) {
+        System.out.println("List products by name = " + name);
+        products
+                .stream()
+                .filter(s -> s.getProductName().equals(name))
+                .forEach(System.out::println);
+        System.out.println();
+    }
+
+    public static void printAllProduct(ArrayList<Product> products) {
+        System.out.println("List of all products");
+        products.forEach(System.out::println);
+        System.out.println();
+    }
+
+    public static void printProductByNameAndPriceLowThan(ArrayList<Product> products, String name, double price) {
+        System.out.println("List products by name = " + name + " and price low than = " + price);
+        products
+                .stream()
+                .filter(s -> s.getProductName().equals(name))
+                .filter(s -> s.getPrice() <= price)
+                .forEach(System.out::println);
+        System.out.println();
+    }
+
+    public static void printProductByBestBefore(ArrayList<Product> products, int bestBefore) {
+        System.out.println("List products by best before more than = " + bestBefore);
+        products
+                .stream()
+                .filter(s -> s.getBestBefore() > bestBefore)
+                .forEach(System.out::println);
+        System.out.println();
     }
 
     public int getId() {

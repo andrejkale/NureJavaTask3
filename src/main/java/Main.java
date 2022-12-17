@@ -2,14 +2,13 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList <Product> products = new ArrayList<>();
-        Product inverter = Product
-                .createProductWithLongTermSaving("EY-3000W"
-                        , 123456789012L, "China", 6300.0, 5);
-        Product powerStation = Product.createProductWithLongTermSaving("EcoFlow"
-                , 123456789011L, "China", 60000.5, 4);
-        products.add(inverter);
-        products.add(powerStation);
-        products.stream().forEach(System.out::println);
+        CreateProduct product = new CreateProduct();
+        ArrayList <Product> products = product.createProductArrayList();
+
+        Product.printProductByName(products, "Coffee");
+        Product.printProductByNameAndPriceLowThan(products, "Apple", 35.0);
+        Product.printProductByBestBefore(products, 180);
+
+        Product.printAllProduct(products);
     }
 }
